@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Запрос исходной и целевой директории у пользователя
+read -p "Ввести путь к исходной директрии: " source_directory
+read -p "Ввести путь к целевой директории: " target_directory
 
 # Запрос расширения файлов, которые нужно скопировать
 echo "Please enter files extension to copy them:"
