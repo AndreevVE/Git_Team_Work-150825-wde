@@ -14,6 +14,12 @@ echo "Thank you. File extension: $file_extension"
 
 
 # Проверка, есть ли файлы с указанным расширением в исходной директории
+if ls "$source_directory"/*."$file_extension" 1> /dev/null 2>&1; then
+    echo "Файлы с расширением .$file_extension  найдены"
+else
+    echo "Ошибка: файлов с расширением .$file_extension  нет"
+    exit 1
+fi
 
 # Копирование файлов с указанным расширением в целевую директорию
 
