@@ -5,7 +5,7 @@ read -p "Ввести путь к исходной директрии: " source_
 read -p "Ввести путь к целевой директории: " target_directory
 
 # Запрос расширения файлов, которые нужно скопировать
-echo "Please enter files extension to copy them:"
+echo -n "Please enter files extension to copy them: "
 read file_extension
 echo "Thank you. File extension: $file_extension"
 # Запросить новое расширение для файлов.
@@ -20,7 +20,8 @@ for DIR in "$source_directory" "$target_directory"
     fi
 done
 # Проверка, есть ли файлы с указанным расширением в исходной директории
-if ls "$source_directory"/*."$file_extension" 1> /dev/null 2>&1; then
+list=$(ls "$source_directory"/*."$file_extension")
+if [ ! -z "$list" ]; then
     echo "Файлы с расширением .$file_extension  найдены"
 else
     echo "Ошибка: файлов с расширением .$file_extension  нет"
@@ -28,6 +29,6 @@ else
 fi
 
 # Копирование файлов с указанным расширением в целевую директорию
-for i in "$source_directory"/*."$file_extension"; do cp "$i" "$target_directory"/"${i##*/%.$file_extension}.$new_file_extension"; done
+for i in "$source_directory"/*."$file_extension"; do cp "$i" "$target_directory/"; done
 # Архивация исходных файлов.
 
