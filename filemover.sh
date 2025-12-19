@@ -1,5 +1,6 @@
 #!/bin/bash
-
+echo "Введите новое расширение файлов"
+read new_file_extension
 # Запрос исходной и целевой директории у пользователя
 read -p "Ввести путь к исходной директрии: " source_directory
 read -p "Ввести путь к целевой директории: " target_directory
